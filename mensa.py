@@ -29,7 +29,6 @@ data = r.read()
 conn.close()
 text += data.decode('latin-1')
 
-response['text'] = text
 
 # Parsing the text
 out_text = ''
@@ -44,5 +43,5 @@ for line in lines:
     if int(date_parts[0]) == now.day and int(date_parts[1]) == now.month and int(date_parts[2]) == now.year:
       out_text += '{}\t{}\n'.format(fields[3], fields[5]) 
       
-
-print(out_text)
+response['text'] = out_text
+print(json.dumps(response))
